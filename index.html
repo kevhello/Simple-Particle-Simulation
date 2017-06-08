@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>484 Project - Kevin Vuong </title>
+	</head>
+
+	<body>
+		<script src="lib/three.js"></script>
+		<script src="lib/jquery-3.2.1.js"></script>
+		<script src="lib/OrbitControls.js"></script>
+		<script src="lib/dat.gui.min.js"></script>
+		<script src="scripts/app.js"></script>
+		<!--Shaders for WebGL-->
+		<script id="vertexShader" type="x-shader/x-vertex">
+		// Attributes are only defiend in the vertex shader
+		// Uniforms are variables that change outside of the shader
+		// Varyings is a way to take variables from vertex shader and pass them to fragment shader
+		uniform float time;
+		uniform float pointSize;
+		void main()
+		{
+			
+			gl_PointSize = pointSize;
+			gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+		}
+		</script>
+		
+		<script id="fragmentShader" type="x-shader/x-fragment">
+		precision mediump float;
+
+		void main() 
+		{
+			gl_FragColor = vec4(0.0, 0.0, 1.0, 0.90);
+		}
+		</script>
+	</body>
+</html>
